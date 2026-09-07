@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-black">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOLOGRAM OS // v2.0</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+                        sans: ['"JetBrains Mono"', 'ui-monospace', 'system-ui', 'sans-serif'], // Force mono everywhere
+                    },
+                    colors: {
+                        holo: {
+                            bg: '#000205',
+                            panel: 'rgba(0, 20, 30, 0.6)', // Transparent dark cyan
+                            border: '#00f3ff', // Bright Cyan
+                            text: '#e0f7fa', // Pale Cyan
+                            textBright: '#ffffff',
+                            accent: '#00f3ff', // Cyan
+                            secondary: '#bc13fe', // Electric Purple
+                            alert: '#ff003c', // Cyber Red
+                            success: '#00ff9d' // Neon Green
+                        }
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "linear-gradient(to right, rgba(0, 243, 255, 0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 243, 255, 0.1) 1px, transparent 1px)",
+                        'holo-gradient': "linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,20,30,0.9) 100%)"
+                    },
+                    boxShadow: {
+                        'glow': '0 0 10px rgba(0, 243, 255, 0.3), 0 0 20px rgba(0, 243, 255, 0.1)',
+                        'glow-lg': '0 0 20px rgba(0, 243, 255, 0.4), 0 0 40px rgba(0, 243, 255, 0.2)',
+                        'glow-alert': '0 0 10px rgba(255, 0, 60, 0.5)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { touch-action: none; }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: #004d57; border: 1px solid #00f3ff; }
+        ::-webkit-scrollbar-thumb:hover { background: #00f3ff; }
+        
+        .scanline-overlay {
+            background: linear-gradient(
+                to bottom,
+                rgba(255,255,255,0),
+                rgba(255,255,255,0) 50%,
+                rgba(0,0,0,0.2) 50%,
+                rgba(0,0,0,0.2)
+            );
+            background-size: 100% 4px;
+            pointer-events: none;
+        }
+        
+        .hologram-flicker {
+            animation: flicker 3s infinite;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 0.98; }
+            5% { opacity: 0.95; }
+            10% { opacity: 0.9; }
+            15% { opacity: 0.95; }
+            20% { opacity: 0.99; }
+            50% { opacity: 0.95; }
+            80% { opacity: 0.98; }
+            100% { opacity: 0.99; }
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.548.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.27.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="h-full overflow-hidden bg-black text-holo-text font-mono antialiased selection:bg-holo-accent selection:text-black">
+    <div id="root" class="h-full w-full flex"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
